@@ -1,5 +1,9 @@
-import dice
-import wordlist_loader
+import sys
+
+sys.path.append('.')
+
+import diceware.utils.diceware.dice as dice
+import diceware.utils.diceware.wordlist_loader as wordlist_loader
 
 
 def find_index(wordlist: list[dict[str, str]], number: str) -> int:
@@ -35,7 +39,8 @@ def passphrase_generation(number_of_words: int, separator: str = "-", capitalize
     :param capitalize: Whether to capitalize the first letter of each word
     :return: The passphrase
     """
-    wordlist = wordlist_loader.load_lines_from_file("wordlist.txt")
+    filename = "diceware/utils/diceware/wordlist.txt"
+    wordlist = wordlist_loader.load_lines_from_file(filename)
     passphrase = ""
 
     for i in range(number_of_words):

@@ -1,4 +1,7 @@
-import passgen
+import sys
+
+sys.path.append('.')
+import diceware.utils.diceware.passgen as passgen
 
 
 def generate(number_of_words: int, separator: str, capitalize: bool) -> str:
