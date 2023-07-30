@@ -9,7 +9,7 @@
         <section class="mt-6 text-center">
             <form action="" method="post" class="inline-block">
                 {% csrf_token %}
-                <table class="table-auto mx-auto mb-4">
+                <table class="table-auto mx-auto">
                     {% for field in form %}
                         <tr>
                             <td class="font-bold py-2">{{ field.label_tag }}</td>
@@ -24,7 +24,8 @@
         {% if passphrase %}
             <section class="mt-6 text-center">
                 <h3 class="text-xl font-semibold">Your passphrase:</h3>
-                <p class="text-lg">{{ passphrase }}</p>
+                <p class="text-lg mb-2 passphrase-text">{{ passphrase }}</p>
+                <button onclick="copyPassphraseToClipboard()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Copy</button>
             </section>
         {% endif %}
 
@@ -50,6 +51,18 @@
             <p class="mt-2">It is recommended to use a passphrase that is easy to remember. For example, you can use a passphrase that is made up of words that are easy to remember. For example, you can use a passphrase that is made up of words that are easy to remember. For example, you can use a passphrase that is made up of words that are easy to remember. For example, you can use a passphrase that is made up of words that are easy to remember. For example, you can use a passphrase that is made up of words that are easy to remember. For example, you can use a passphrase that is made up of words that are easy to remember. For example, you can use a passphrase that is made up of words that are easy to remember. For example, you can use a passphrase that is made up of words that are easy to remember. For example, you can use a passphrase that is made up of words that are easy to remember. For example, you can use a passphrase that is made up of words that are easy to remember.</p>
         </section>
     </div>
+
+    <script>
+        function copyPassphraseToClipboard() {
+            const passphraseText = document.querySelector('.passphrase-text').innerText;
+            navigator.clipboard.writeText(passphraseText)
+                .then(() => {
+                    alert('Passphrase copied to clipboard!');
+                })
+                .catch((err) => {
+                    console.error('Error copying to clipboard: ', err);
+                });
+        }
+    </script>
+
 {% endblock %}
-
-
