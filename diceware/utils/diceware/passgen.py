@@ -46,12 +46,12 @@ def passphrase_generation(number_of_words: int, separator: str = "-", capitalize
     for i in range(number_of_words):
         number = dice.generate_string_of_numbers()
         index = find_index(wordlist, number)
-        word = get_word(wordlist, index).capitalize()
+        word = get_word(wordlist, index)
 
         if capitalize:
             word = word.capitalize()
 
-        if i == 0 or i == number_of_words - 1:
+        if i == 0 or i == number_of_words:
             passphrase += word
         else:
             passphrase += separator + word
