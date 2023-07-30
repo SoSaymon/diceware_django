@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.shortcuts import render
 from diceware.forms import DiceWareForm
 from .utils.diceware.diceware import generate
@@ -9,6 +11,15 @@ def index(request):
     :param request:  The request
     :return:  The rendered index page
     """
+    year = datetime.now().year
+
+    context = {
+        'year': str(year),
+        'form': DiceWareForm,
+        'error': None,
+        'passphrase': None,
+    }
+
     if request.method == 'POST':
         form = DiceWareForm(request.POST)
         if form.is_valid():
@@ -19,25 +30,12 @@ def index(request):
             try:
                 passphrase = generate(word_count, separator, capitalize)
             except ValueError as error:
-                context = {
-                    'form': DiceWareForm,
-                    'error': error,
-                    'passphrase': None,
-                }
+                context['error'] = error.args[0]
+
                 return render(request, 'index.html', context)
 
-            context = {
-                'form': DiceWareForm,
-                'error': None,
-                'passphrase': passphrase,
-            }
+            context['passphrase'] = passphrase
 
             return render(request, 'index.html', context)
-
-    context = {
-        'form': DiceWareForm,
-        'error': None,
-        'passphrase': None,
-    }
 
     return render(request, 'index.html', context)
