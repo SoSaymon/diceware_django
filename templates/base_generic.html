@@ -2,9 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <title>{% block title %}Diceware{% endblock %}</title>
+
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/dist.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.webp' %}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Diceware is a method for creating passphrases, passwords, and other cryptographic variables using an ordinary die from a pair of dice as a hardware random number generator.">
+    <meta name="keywords" content="diceware, passphrase, password, generator, dice, random, number, passphrrase generator, password generator, dice generator, random generator, number generator">
+
+    <meta name="author" content="SoSaymon">
+
+    <meta property="og:title" content="Diceware">
+    <meta property="og:description" content="Diceware is a method for creating passphrases, passwords, and other cryptographic variables using an ordinary die from a pair of dice as a hardware random number generator.">
+    <meta property="og:image" content="{% static 'img/favicon.webp' %}">
+    <meta property="og:url" content="https://diceware.szymon-chirowski.tech/">
+    <meta property="og:type" content="website">
+
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+
     <style>
         html, body {
             height: 100%;
