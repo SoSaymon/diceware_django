@@ -18,6 +18,7 @@ def index(request):
         'form': DiceWareForm,
         'error': None,
         'passphrase': None,
+        'cookies': {'word_count': None, 'separator': None, 'capitalize': None}
     }
 
     if request.method == 'POST':
@@ -50,6 +51,11 @@ def index(request):
 
             context['passphrase'] = passphrase
 
-            return render(request, 'index.html', context)
+            response = render(request, 'index.html', context)
+            response.set_cookie('word_count', word_count, max_age=60 * 60 * 24 * 365, samesite='Strict', secure=True)
+            response.set_cookie('separator', separator, max_age=60 * 60 * 24 * 365, samesite='Strict', secure=True)
+            response.set_cookie('capitalize', capitalize, max_age=60 * 60 * 24 * 365, samesite='Strict', secure=True)
+
+            return response
 
     return render(request, 'index.html', context)
