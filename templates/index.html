@@ -1,0 +1,55 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}Diceware - generate your passphrase{% endblock %}
+
+{% block content %}
+    <div class="container mx-auto py-8 px-6">
+        <h1 class="text-3xl font-bold text-center">Diceware Passphrase Generator</h1>
+        <h2 class="text-xl font-semibold text-center mt-4">Generate easy to use passwords!</h2>
+        <section class="mt-6 text-center">
+            <form action="" method="post" class="inline-block">
+                {% csrf_token %}
+                <table class="table-auto mx-auto mb-4">
+                    {% for field in form %}
+                        <tr>
+                            <td class="font-bold py-2">{{ field.label_tag }}</td>
+                            <td class="py-2">{{ field }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <input type="submit" value="Submit" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+            </form>
+        </section>
+
+        {% if passphrase %}
+            <section class="mt-6 text-center">
+                <h3 class="text-xl font-semibold">Your passphrase:</h3>
+                <p class="text-lg">{{ passphrase }}</p>
+            </section>
+        {% endif %}
+
+        {% if error %}
+            <section class="mt-6 text-center">
+                <h3 class="text-xl font-semibold">Error:</h3>
+                <p class="text-lg">{{ error }}</p>
+            </section>
+        {% endif %}
+
+        <section class="mt-6">
+            <h3 class="text-xl font-semibold">What is a Diceware Passphrase?</h3>
+            <p class="mt-2">A Diceware Passphrase is a passphrase that is easy to remember, but hard to guess. It is made up of a number of words, which are randomly selected from a list of words. The list of words is created by rolling a dice. The dice is rolled five times, and the result is a five-digit number. This number is then used to look up a word in the list of words. This process is repeated until the desired number of words is reached.</p>
+
+            <h3 class="text-xl font-semibold mt-6">Frequently Asked Questions</h3>
+            <h4 class="text-lg font-semibold mt-2">How many words should I use?</h4>
+            <p class="mt-2">It is recommended to use at least 6 words. The more words you use, the more secure your passphrase will be. However, the more words you use, the harder it will be to remember your passphrase.</p>
+
+            <h4 class="text-lg font-semibold mt-2">How secure is my passphrase?</h4>
+            <p class="mt-2">It depends on how many words you use. The more words you use, the more secure your passphrase will be. However, the more words you use, the harder it will be to remember your passphrase.</p>
+
+            <h4 class="text-lg font-semibold mt-2">How do I remember my passphrase?</h4>
+            <p class="mt-2">It is recommended to use a passphrase that is easy to remember. For example, you can use a passphrase that is made up of words that are easy to remember. For example, you can use a passphrase that is made up of words that are easy to remember. For example, you can use a passphrase that is made up of words that are easy to remember. For example, you can use a passphrase that is made up of words that are easy to remember. For example, you can use a passphrase that is made up of words that are easy to remember. For example, you can use a passphrase that is made up of words that are easy to remember. For example, you can use a passphrase that is made up of words that are easy to remember. For example, you can use a passphrase that is made up of words that are easy to remember. For example, you can use a passphrase that is made up of words that are easy to remember. For example, you can use a passphrase that is made up of words that are easy to remember.</p>
+        </section>
+    </div>
+{% endblock %}
+
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Diceware{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/dist.css' %}">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            flex-grow: 1;
+        }
+
+        .footer {
+            flex-shrink: 0;
+        }
+
+        .transition-colors {
+            transition-property: color;
+            transition-duration: 0.5s;
+        }
+
+        .transition-colors:hover {
+            color: #8bd77e;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+<main class="content container mx-auto py-8 px-6">
+    {% block content %}{% endblock %}
+</main>
+<footer class="footer bg-gray-800 py-4 px-6 text-white">
+    <div>
+        <p class="text-center">©
+            {% block footer_year %}
+                {% if year != "2023" %}
+                    2023 - {{ year }}
+                {% else %}
+                    {{ year }}
+                {% endif %}
+            {% endblock %}
+        <a class="font-bold underline transition-colors" href="https://github.com/SoSaymon">SoSaymon</a>. All rights reserved.</p>
+    </div>
+</footer>
+</body>
+</html>
