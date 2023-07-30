@@ -63,6 +63,39 @@
                     console.error('Error copying to clipboard: ', err);
                 });
         }
+
+        function getCookies(name) {
+            const cookieArr = document.cookie.split(';');
+
+            for (let i = 0; i < cookieArr.length; i++) {
+                const cookie = cookieArr[i].trim();
+
+                if (cookie.startsWith(name + '=')) {
+                    return cookie.substring(name.length + 1);
+                }
+            }
+
+            return null;
+        }
+
+        function loadCookies() {
+            const inputList = ['word_count', 'separator', 'capitalize'];
+
+            for (let i = 0; i < inputList.length; i++) {
+                const cookie = getCookies(inputList[i]);
+                const input = document.querySelector(`#id_${inputList[i]}`);
+
+                if (cookie !== null) {
+                    if (input.type === 'checkbox') {
+                        input.checked = cookie.toLowerCase() === 'true';
+                    } else {
+                        input.value = cookie === '""' ? '' : cookie.replaceAll('"', '');
+                    }
+                }
+            }
+        }
+
+        window.onload = loadCookies;
     </script>
 
 {% endblock %}
