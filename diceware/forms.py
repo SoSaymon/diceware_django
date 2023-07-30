@@ -5,9 +5,9 @@ class DiceWareForm(forms.Form):
     """
     Form for generating a diceware password
     """
-    word_count = forms.IntegerField(label='Number of words', min_value=3, max_value=10, initial=6, required=True, help_text='Number of words to generate')
-    separator = forms.CharField(label='Separator', max_length=1, required=False, help_text='Character to separate words with', initial='-')
-    capitalize = forms.BooleanField(label='Capitalize first letter', required=False, help_text='Capitalize first letter of each word', initial=True)
+    word_count = forms.IntegerField(label='Number of words', min_value=3, max_value=10, initial=6, required=True)
+    separator = forms.CharField(label='Separator', max_length=1, required=False, initial='-')
+    capitalize = forms.BooleanField(label='Capitalize first letter', required=False, initial=True)
 
     def clean(self):
         cleaned_data = super().clean()
