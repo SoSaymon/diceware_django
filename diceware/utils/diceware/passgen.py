@@ -1,3 +1,4 @@
+import os
 import sys
 
 sys.path.append('.')
@@ -39,7 +40,7 @@ def passphrase_generation(number_of_words: int, separator: str = "-", capitalize
     :param capitalize: Whether to capitalize the first letter of each word
     :return: The passphrase
     """
-    filename = "diceware/utils/diceware/wordlist.txt"
+    filename = os.path.join(os.path.dirname(__file__), "wordlist.txt")
     wordlist = wordlist_loader.load_lines_from_file(filename)
     passphrase = ""
 
