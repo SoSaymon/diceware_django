@@ -28,6 +28,20 @@ def index(request):
             capitalize = form.cleaned_data.get('capitalize')
 
             try:
+                word_count = int(word_count)
+            except ValueError:
+                context['error'] = 'Word count must be an integer'
+
+                return render(request, 'index.html', context)
+
+            try:
+                capitalize = bool(capitalize)
+            except ValueError:
+                context['error'] = 'Capitalize must be a boolean'
+
+                return render(request, 'index.html', context)
+
+            try:
                 passphrase = generate(word_count, separator, capitalize)
             except ValueError as error:
                 context['error'] = error.args[0]
