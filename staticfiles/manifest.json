@@ -1,0 +1,18 @@
+{
+    "short_name": "Diceware",
+    "name": "Diceware - Passphrase Generator",
+    "icons": [
+      {
+        "src": "img/favicon.webp",
+        "sizes": "192x192",
+        "type": "image/webp"
+      }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#D1FAE5",
+    "background_color": "#D1FAE5",
+    "description": "Diceware is a passphrase generator that uses the Diceware wordlist to generate cryptographically secure passphrases.",
+    "orientation": "portrait-primary",
+    "scope": "/"
+}
